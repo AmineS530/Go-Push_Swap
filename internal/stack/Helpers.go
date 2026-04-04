@@ -1,24 +1,20 @@
 package stack
 
 type Node struct {
-	val  int
-	next *Node
-	prev *Node
+	Val   int
+	Index int
+	next  *Node
+	prev  *Node
 }
 
 type Stack struct {
-	head *Node
-	size int
+	Head *Node
+	Size int
 }
 
 func New() *Stack {
 	return &Stack{}
 }
 
-func (s *Stack) IsEmpty() bool {
-	return s.size == 0
-}
-
-func (s *Stack) Len() int {
-	return s.size
-}
+func (n *Node) Next() *Node { return n.next }
+func (n *Node) Prev() *Node { return n.prev }

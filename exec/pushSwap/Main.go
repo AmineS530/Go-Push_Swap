@@ -3,6 +3,9 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"push_swap/internal/parser"
+	"push_swap/internal/stack"
 )
 
 func main() {
@@ -11,6 +14,14 @@ func main() {
 		return
 	}
 
-	// numbers, err := parser.ParseArgs(os.Args[1:])
-	// fmt.Println(numbers, err)
+	numbers, err := parser.ParseArgs(os.Args[1:])
+	if err != nil {
+		fmt.Println("Error parsing arguments:", err)
+		return
+	}
+	fmt.Println(numbers)
+
+	numbers = stack.Normalize(numbers)
+	
+	fmt.Println(numbers)
 }
