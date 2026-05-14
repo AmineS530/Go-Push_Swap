@@ -16,9 +16,3 @@ func Solve(a, b *stack.Stack) []string {
 		return solveBig(a, b)
 	}
 }
-
-func solveBig(a, b *stack.Stack) []string {
-	moves := []string{}
-
-	return moves
-}

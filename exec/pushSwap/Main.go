@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"push_swap/internal/parser"
+	"push_swap/internal/solver"
 	"push_swap/internal/stack"
 )
 
@@ -19,9 +20,13 @@ func main() {
 		fmt.Println("Error parsing arguments:", err)
 		return
 	}
-	fmt.Println(numbers)
 
-	numbers = stack.Normalize(numbers)
-	
-	fmt.Println(numbers)
+	indices := stack.Normalize(numbers)
+	stackA := stack.NewFromSlice(numbers, indices)
+	stackB := stack.New()
+
+	moves := solver.Solve(stackA, stackB)
+	for _, move := range moves {
+		fmt.Println(move)
+	}
 }
