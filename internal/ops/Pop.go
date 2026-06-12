@@ -4,11 +4,11 @@ import "push_swap/internal/stack"
 
 // sa - swap top two of a
 func Sa(a *stack.Stack) string {
-    if a.Size >= 2 {
-        a.Head.Val, a.Head.Next().Val = a.Head.Next().Val, a.Head.Val
-        a.Head.Index, a.Head.Next().Index = a.Head.Next().Index, a.Head.Index
-    }
-    return "sa"
+	if a.Size >= 2 {
+		a.Head.Val, a.Head.Next().Val = a.Head.Next().Val, a.Head.Val
+		a.Head.Index, a.Head.Next().Index = a.Head.Next().Index, a.Head.Index
+	}
+	return "sa"
 }
 
 // sb - swap top two of b

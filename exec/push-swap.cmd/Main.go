@@ -10,13 +10,13 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("Usage: go run Main.go <numbers>")
+		// fmt.Println("Usage: go run exec/push-swap.cmd/Main.go <numbers> || ./push-swap \"<numbers>\"")
 		return
 	}
 
 	numbers, err := parser.ParseArgs(os.Args[1:])
 	if err != nil {
-		fmt.Println("Error parsing arguments:", err)
+		fmt.Println("\033[31mError:", err, "\033[0m")
 		return
 	}
 

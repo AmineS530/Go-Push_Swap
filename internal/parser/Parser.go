@@ -25,12 +25,12 @@ func validateArgs(args []string) ([]string, error) {
 	numStrs := []string{}
 	// under normal conditions it shouldn't enter this block, but just in case
 	if len(args) == 0 {
-		return nil, fmt.Errorf("Error: No numbers provided")
+		return nil, fmt.Errorf("No numbers provided")
 	}
 	if len(args) == 1 {
 		numStrs = strings.Fields(args[0])
 		if len(numStrs) == 0 {
-			return nil, fmt.Errorf("Error: No numbers provided")
+			return nil, fmt.Errorf("No numbers provided")
 		}
 	} else if len(args) > 1 {
 		numStrs = args
@@ -43,7 +43,7 @@ func convertNumbers(numStrs []string) ([]int, error) {
 	for _, numStr := range numStrs {
 		num, err := strconv.Atoi(numStr)
 		if err != nil {
-			return nil, fmt.Errorf("Error: Invalid number: %s", numStr)
+			return nil, fmt.Errorf("Invalid number: %s", numStr)
 		}
 		numbers = append(numbers, num)
 	}
@@ -54,7 +54,7 @@ func checkDups(numbers []int) error {
 	seen := make(map[int]bool)
 	for _, num := range numbers {
 		if seen[num] {
-			return fmt.Errorf("Error: Duplicate number found: %d", num)
+			return fmt.Errorf("Duplicate number found: %d", num)
 		}
 		seen[num] = true
 	}

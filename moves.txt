@@ -1,0 +1,6 @@
+ra
+sa
+
+----- RESULT -----
+Instructions: 2
+Checker: OK
