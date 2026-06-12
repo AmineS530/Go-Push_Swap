@@ -61,7 +61,9 @@ func Normalize(nums []int) []int {
 	return indices
 }
 
-func NewFromSlice(nums []int, indices []int) *Stack {
+func NewFromSlice(nums []int) *Stack {
+	indices := Normalize(nums)
+
 	s := New()
 	for i := len(nums) - 1; i >= 0; i-- {
 		s.pushNode(&Node{

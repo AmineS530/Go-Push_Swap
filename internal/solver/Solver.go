@@ -2,17 +2,20 @@ package solver
 
 import "push_swap/internal/stack"
 
-func Solve(a, b *stack.Stack) []string {
-	if IsSorted(a) {
+func Solve(nums []int) []string {
+	stackA := stack.NewFromSlice(nums)
+	stackB := stack.New()
+	
+	if IsSorted(stackA) {
 		return nil
 	}
 
-	switch a.Size {
+	switch stackA.Size {
 	case 2:
-		return solveTwo(a)
+		return solveTwo(stackA)
 	case 3:
-		return solveThree(a)
+		return solveThree(stackA)
 	default:
-		return solveBig(a, b)
+		return solveBig(stackA, stackB)
 	}
 }

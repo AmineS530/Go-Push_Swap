@@ -6,7 +6,6 @@ import (
 
 	"push_swap/internal/parser"
 	"push_swap/internal/solver"
-	"push_swap/internal/stack"
 )
 
 func main() {
@@ -21,11 +20,7 @@ func main() {
 		return
 	}
 
-	indices := stack.Normalize(numbers)
-	stackA := stack.NewFromSlice(numbers, indices)
-	stackB := stack.New()
-
-	moves := solver.Solve(stackA, stackB)
+	moves := solver.Solve(numbers)
 	for _, move := range moves {
 		fmt.Println(move)
 	}
