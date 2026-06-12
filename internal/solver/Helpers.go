@@ -1,6 +1,7 @@
 package solver
 
 import (
+	"push_swap/internal/ops"
 	"push_swap/internal/stack"
 )
 
@@ -78,4 +79,35 @@ func bestCandidate(a, b *stack.Stack) *stack.Node {
 	}
 
 	return best
+}
+
+func posOfIndex(a *stack.Stack, target int) int {
+	curr := a.Head
+
+	for i := 0; i < a.Size; i++ {
+		if curr.Index == target {
+			return i
+		}
+		curr = curr.Next()
+	}
+
+	return -1
+}
+
+func moveIndexToTop(a *stack.Stack, target int) []string {
+	moves := []string{}
+
+	pos := posOfIndex(a, target)
+
+	cost, forward := costToTop(pos, a.Size)
+
+	for i := 0; i < cost; i++ {
+		if forward {
+			moves = append(moves, ops.Ra(a))
+		} else {
+			moves = append(moves, ops.Rra(a))
+		}
+	}
+
+	return moves
 }

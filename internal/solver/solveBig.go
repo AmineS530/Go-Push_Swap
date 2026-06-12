@@ -8,13 +8,13 @@ import (
 func solveBig(a, b *stack.Stack) []string {
 	moves := []string{}
 
-	// step 1: push all but 3 to B
-	for a.Size > 3 {
+	// step 1: push all but 5 to B
+	for a.Size > 5 {
 		moves = append(moves, ops.Pb(a, b))
 	}
 
-	// step 2: sort the 3 remaining in A
-	moves = append(moves, solveThree(a)...)
+	// step 2: sort the 5 remaining in A
+	moves = append(moves, solveFive(a, b)...)
 
 	// step 3: insert each B node back into A
 	for b.Size > 0 {

@@ -31,3 +31,24 @@ func solveThree(a *stack.Stack) []string {
 
 	return moves
 }
+
+func solveFive(a, b *stack.Stack) []string {
+	moves := []string{}
+
+	// push index 0
+	moves = append(moves, moveIndexToTop(a, 0)...)
+	moves = append(moves, ops.Pb(a, b))
+
+	// push index 1
+	moves = append(moves, moveIndexToTop(a, 1)...)
+	moves = append(moves, ops.Pb(a, b))
+
+	// sort remaining 3
+	moves = append(moves, solveThree(a)...)
+
+	// bring back
+	moves = append(moves, ops.Pa(a, b))
+	moves = append(moves, ops.Pa(a, b))
+
+	return moves
+}
