@@ -2,8 +2,8 @@ package stack
 
 import "sort"
 
-func (s *Stack) Push(val int) {
-	node := &Node{Val: val}
+func (s *Stack) Push(val, index int) {
+	node := &Node{Val: val, Index: index}
 
 	if s.Head == nil {
 		node.next = node
@@ -23,12 +23,13 @@ func (s *Stack) Push(val int) {
 	s.Size++
 }
 
-func (s *Stack) Pop() (int, bool) {
+func (s *Stack) Pop() (int, int, bool) {
 	if s.Head == nil {
-		return 0, false
+		return 0, 0, false
 	}
 
 	val := s.Head.Val
+	index := s.Head.Index
 
 	if s.Size == 1 {
 		s.Head = nil
@@ -41,7 +42,7 @@ func (s *Stack) Pop() (int, bool) {
 	}
 
 	s.Size--
-	return val, true
+	return val, index, true
 }
 
 func Normalize(nums []int) []int {

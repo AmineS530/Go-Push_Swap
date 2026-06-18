@@ -8,13 +8,13 @@ import (
 func solveBig(a, b *stack.Stack) []string {
 	moves := []string{}
 
-	// step 1: push all but 5 to B
-	for a.Size > 5 {
+	// step 1: push all but 3 to B
+	for a.Size > 3 {
 		moves = append(moves, ops.Pb(a, b))
 	}
 
-	// step 2: sort the 5 remaining in A
-	moves = append(moves, solveFive(a, b)...)
+	// step 2: sort the 3 remaining in A
+	moves = append(moves, solveThree(a)...)
 
 	// step 3: insert each B node back into A
 	for b.Size > 0 {
@@ -41,12 +41,12 @@ func findTargetInA(index int, a *stack.Stack) (*stack.Node, int) {
 
 		// does index fit in the gap between curr and curr.Next()?
 		if curr.Index < index && index < curr.Next().Index {
-			return curr, i
+			return curr.Next(), (i + 1) % a.Size
 		}
 
 		curr = curr.Next()
 	}
 
-	// no gap found → v is out of range of all gaps → goes after max
-	return maxNode, maxPos
+	// no gap found → v is out of range of all gaps → goes after max (before min)
+	return maxNode.Next(), (maxPos + 1) % a.Size
 }
