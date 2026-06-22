@@ -29,24 +29,24 @@ func solveBig(a, b *stack.Stack) []string {
 
 func findTargetInA(index int, a *stack.Stack) (*stack.Node, int) {
 	curr := a.Head
-	maxNode := a.Head
-	maxPos := 0
 
 	for i := 0; i < a.Size; i++ {
-		// track the max node as we go
-		if curr.Index > maxNode.Index {
-			maxNode = curr
-			maxPos = i
+		next := curr.Next()
+
+		// normal ascending gap
+		if curr.Index < next.Index {
+			if index > curr.Index && index < next.Index {
+				return next, (i + 1) % a.Size
+			}
+		} else {
+			// wrap-around gap (max -> min)
+			if index > curr.Index || index < next.Index {
+				return next, (i + 1) % a.Size
+			}
 		}
 
-		// does index fit in the gap between curr and curr.Next()?
-		if curr.Index < index && index < curr.Next().Index {
-			return curr.Next(), (i + 1) % a.Size
-		}
-
-		curr = curr.Next()
+		curr = next
 	}
 
-	// no gap found → v is out of range of all gaps → goes after max (before min)
-	return maxNode.Next(), (maxPos + 1) % a.Size
+	return a.Head, 0
 }
