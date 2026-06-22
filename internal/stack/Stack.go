@@ -64,29 +64,9 @@ func Normalize(nums []int) []int {
 
 func NewFromSlice(nums []int) *Stack {
 	indices := Normalize(nums)
-
 	s := New()
 	for i := len(nums) - 1; i >= 0; i-- {
-		s.pushNode(&Node{
-			Val:   nums[i],
-			Index: indices[i],
-		})
+		s.Push(nums[i], indices[i])
 	}
 	return s
-}
-
-func (s *Stack) pushNode(node *Node) {
-	if s.Head == nil {
-		node.next = node
-		node.prev = node
-		s.Head = node
-	} else {
-		tail := s.Head.prev
-		node.next = s.Head
-		node.prev = tail
-		tail.next = node
-		s.Head.prev = node
-		s.Head = node
-	}
-	s.Size++
 }

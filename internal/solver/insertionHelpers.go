@@ -70,8 +70,7 @@ func rotateToMin(a *stack.Stack) []string {
 		curr = curr.Next()
 	}
 
-	_, forward := costToTop(minPos, a.Size)
-	cost, _ := costToTop(minPos, a.Size)
+	cost, forward := costToTop(minPos, a.Size)
 
 	for i := 0; i < cost; i++ {
 		if forward {
