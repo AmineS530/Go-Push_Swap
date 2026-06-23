@@ -1,4 +1,4 @@
-# 🧠 Go-Push_Swap — Full Blueprint (AUDHD Edition)
+# 🧠 Go-Push_Swap — Full Blueprint
 
 > **TL;DR**: Take a list of numbers. Sort them using only two stacks (A and B) and 11 allowed moves. Print the moves. That's it.
 
